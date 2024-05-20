@@ -3,8 +3,8 @@
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
 
   <?define ProductName = "Node.js" ?>
-  <?define ProductDescription = "Node.js" ?>
-  <?define ProductAuthor = "Node.js Foundation" ?>
+  <?define ProductDescription = "Node.js for Windows 7" ?>
+  <?define ProductAuthor = "Alex313031" ?>
 
   <?define RegistryKeyPath = "SOFTWARE\Node.js" ?>
 
@@ -23,8 +23,8 @@
              Compressed="yes"
              InstallScope="perMachine"/>
 
-    <Condition Message="This application is only supported on Windows 8.1, Windows Server 2012 R2, or higher.">
-      <![CDATA[Installed OR (VersionNT >= 603) OR (VersionNT >= 602 AND MsiNTProductType <> 1)]]>
+    <Condition Message="This application is only supported on Windows 7, Windows Server 2008 R2, or higher.">
+      <![CDATA[Installed OR (VersionNT >= 601)]]>
     </Condition>
 
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes"/>

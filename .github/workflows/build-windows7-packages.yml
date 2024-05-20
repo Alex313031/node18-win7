@@ -1,0 +1,33 @@
+name: build-windows7-packages
+
+on:
+  push:
+    branches: [win7, v*-win7]
+    tags: [v*-win7]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-2019
+
+    steps:
+      - name: Install NASM
+        uses: crazy-max/ghaction-chocolatey@v1
+        with:
+          args: install nasm
+
+      - uses: actions/checkout@v2
+      - name: Build and package
+        run: |
+          .\vcbuild.bat msi package
+
+      - name: Upload MSI installer
+        uses: actions/upload-artifact@v2
+        with:
+          name: msi
+          path: node-v*.msi
+      - name: Upload ZIP package
+        uses: actions/upload-artifact@v2
+        with:
+          name: package
+          path: out/Release/node-v*.zip
