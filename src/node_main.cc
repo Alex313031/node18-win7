@@ -24,6 +24,8 @@
 
 #ifdef _WIN32
 #include <windows.h>
+#include <VersionHelpers.h>
+#include <WinError.h>
 
 int wmain(int argc, wchar_t* wargv[]) {
   if (!IsWindows7OrGreater()) {
